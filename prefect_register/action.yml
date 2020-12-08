@@ -1,13 +1,14 @@
 # action.yml
-name: 'Prefect Register'
-description: 'Register workflows with Prefect Cloud'
+name: 'Hello World'
+description: 'Greet someone and record the time'
 inputs:
-  workflow_repository_path:
-    description: 'Path where the workflow lives'
+  who-to-greet:  # id of input
+    description: 'Who to greet'
     required: true
-# outputs:
-#   time: # id of output.
-#     description: 'The time we greeted you'
+    default: 'World'
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
 runs:
   using: 'docker'
   image: 'Dockerfile'
