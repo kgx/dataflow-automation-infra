@@ -2,7 +2,7 @@
 name: 'Register Workflow with Prefect Cloud'
 inputs:
   git_url:
-    description: 'Url of workflow's Git repository'
+    description: 'Url of workflow Git repository'
     required: true
   branch_name:
     description: 'Branch name where workflow must be found'
