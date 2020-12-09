@@ -10,6 +10,9 @@ inputs:
   commit_sha:
     description: 'Commit SHA'
     required: true
+  workflow_path:
+    description: 'Path to the workflow in the repository'
+    required: true
 # outputs:
 #   time: # id of output
 #     description: 'The time we greeted you'
