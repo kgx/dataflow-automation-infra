@@ -3,7 +3,9 @@
 git_url=$1
 branch_name=$2
 commit_sha=$3
-repository_name=${$(basename $git_url)%.*}
+
+git_url_basename=$(basename $git_url)
+repository_name=${git_url_basename%.*}
 
 #echo "Hello $1"
 #time=$(date)
