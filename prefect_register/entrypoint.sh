@@ -7,7 +7,8 @@ echo "list files"
 ls
 echo "------"
 
-git clone --depth 1 --branch feature/add_workflow --filter=blob:none --no-checkout https://github.com/maikelpenz/dataflow-sample-workflow.git
+git clone --branch feature/add_workflow --no-checkout https://github.com/maikelpenz/dataflow-sample-workflow.git
 cd dataflow-sample-workflow
-git checkout feature/add_workflow -- workflow
+git checkout e678cd06ba5db1492b0297e5cd387aab029d3eaf -- workflow
 ls
+ls workflow
