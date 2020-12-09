@@ -1,8 +1,14 @@
 # action.yml
 name: 'Register Workflow with Prefect Cloud'
 inputs:
-  workflow-path:
-    description: 'Workflow Path'
+  git_url:
+    description: 'Url of workflow's Git repository'
+    required: true
+  branch_name:
+    description: 'Branch name where workflow must be found'
+    required: true
+  commit_sha:
+    description: 'Commit SHA'
     required: true
 # outputs:
 #   time: # id of output
@@ -11,4 +17,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.workflow-path }}
+    - ${{ inputs.git_url }}
+    - ${{ inputs.branch_name }}
+    - ${{ inputs.commit_sha }}
