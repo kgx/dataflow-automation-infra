@@ -14,6 +14,8 @@ git clone --branch $branch_name \
 cd $repository_name
 git checkout $commit_sha -- workflow
 
+echo $workflow_path
 ls 
 echo "subfolder"
+ls workflow
 ls $workflow_path
