@@ -12,6 +12,6 @@ repository_name=${git_url_basename%.*}
 git clone --branch $branch_name \
          --no-checkout $git_url
 cd $repository_name
-git checkout $commit_sha -- $workflow_path
+git checkout $commit_sha -- "$workflow_path"
 
 ls
