@@ -8,6 +8,9 @@ workflow_path=$4
 git_url_basename=$(basename $git_url)
 repository_name=${git_url_basename%.*}
 
+echo "pwd"
+pwd
+echo "ls"
 ls
 
 # clone workflow into container
