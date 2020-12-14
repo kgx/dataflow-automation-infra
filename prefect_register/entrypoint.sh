@@ -8,14 +8,17 @@ workflow_path=$4
 git_url_basename=$(basename $git_url)
 repository_name=${git_url_basename%.*}
 
+echo "find . -name"
+find . -name "entrypoint.sh"
+
 echo "pwd"
 pwd
-echo "ls"
-ls
 
 # clone workflow into container
 git clone --branch $branch_name \
          --no-checkout $git_url
+echo "ls"
+ls         
 cd $repository_name
 git checkout $commit_sha -- $workflow_path
 ls $workflow_path/
