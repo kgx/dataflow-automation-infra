@@ -2,6 +2,7 @@
 FROM alpine:3.10
 RUN apk update
 RUN apk add git
+RUN apk add build-base
 
 RUN echo "**** install Python ****" && \
     apk add --no-cache python3 && \
