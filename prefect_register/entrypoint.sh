@@ -8,8 +8,8 @@ workflow_path=$4
 git_url_basename=$(basename $git_url)
 repository_name=${git_url_basename%.*}
 
-echo "find . -name"
-find . -name "workflow_register.py"
+echo "ls tmp1"
+ls /tmp/
 
 echo "pwd"
 pwd
@@ -21,4 +21,7 @@ echo "ls"
 ls         
 cd $repository_name
 git checkout $commit_sha -- $workflow_path
-ls $workflow_path/
+mv $workflow_path /tmp/$workflow_path
+
+echo "ls tmp"
+ls /tmp/
