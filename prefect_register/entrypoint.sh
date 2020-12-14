@@ -8,6 +8,8 @@ workflow_path=$4
 git_url_basename=$(basename $git_url)
 repository_name=${git_url_basename%.*}
 
+ls
+
 # clone workflow into container
 git clone --branch $branch_name \
          --no-checkout $git_url
