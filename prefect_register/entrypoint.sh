@@ -20,6 +20,10 @@ mv $workflow_path /tmp/$workflow_path
 # move flow register into the flow folder
 mv /tmp/workflow_register.py /tmp/$workflow_path/workflow_register.py
 
+# install prefect
+pip3 install prefect
+
+# register workflow
 python3 /tmp/$workflow_path/workflow_register.py
 
 
