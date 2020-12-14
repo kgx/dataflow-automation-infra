@@ -20,6 +20,6 @@ mv $workflow_path /tmp/$workflow_path
 # move flow register into the flow folder
 mv /tmp/workflow_register.py /tmp/$workflow_path/workflow_register.py
 
-python /tmp/$workflow_path/workflow_register.py
+python3 /tmp/$workflow_path/workflow_register.py
 
 
