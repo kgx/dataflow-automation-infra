@@ -17,5 +17,5 @@ RUN echo "**** install Python ****" && \
 COPY entrypoint.sh /entrypoint.sh
 COPY workflow_register.py /tmp/workflow_register.py
 
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
+# Code file to execute when the docker container starts up (`entrypoint.sh`).
 ENTRYPOINT ["/entrypoint.sh"]
