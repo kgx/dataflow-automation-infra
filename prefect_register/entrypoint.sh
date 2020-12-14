@@ -9,7 +9,7 @@ git_url_basename=$(basename $git_url)
 repository_name=${git_url_basename%.*}
 
 echo "find . -name"
-find . -name "entrypoint.sh"
+find . -name "workflow_register.py"
 
 echo "pwd"
 pwd
