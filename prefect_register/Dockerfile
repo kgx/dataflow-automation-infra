@@ -15,7 +15,7 @@ RUN echo "**** install Python ****" && \
     if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi
 
 #RUN apk add gcc python3-dev musl-dev libc-dev libc6-compat linux-headers build-base libffi-dev openssl-dev
-RUN apk add gcc python3-dev build-base musl-dev libc-dev openssl-dev
+RUN apk add gcc python3-dev build-base musl-dev libc-dev openssl-dev linux-headers
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
