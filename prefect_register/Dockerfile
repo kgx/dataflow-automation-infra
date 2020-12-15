@@ -1,4 +1,4 @@
-# Container image that runs your code.
+# Container image that runs your code
 FROM alpine:3.10
 RUN apk update
 RUN apk upgrade 
