@@ -3,7 +3,6 @@ FROM alpine:3.10
 RUN apk update
 RUN apk upgrade 
 RUN apk add git
-#RUN apk add build-base
 
 RUN echo "**** install Python ****" && \
     apk add --no-cache python3 && \
@@ -15,7 +14,8 @@ RUN echo "**** install Python ****" && \
     pip3 install --no-cache --upgrade pip setuptools wheel && \
     if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi
 
-RUN apk add gcc python3-dev musl-dev libc-dev libc6-compat linux-headers build-base git libffi-dev openssl-dev
+#RUN apk add gcc python3-dev musl-dev libc-dev libc6-compat linux-headers build-base libffi-dev openssl-dev
+RUN apk add gcc python3-dev build-base
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
