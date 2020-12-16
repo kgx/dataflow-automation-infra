@@ -26,7 +26,7 @@ pip3 install prefect
 # install boto3
 pip3 install boto3
 
-cd /tmp/$workflow_path
-ls
+#cd /tmp/$workflow_path
+
 # register workflow
-python3 workflow_register.py
+python3 /tmp/$workflow_path/workflow_register.py

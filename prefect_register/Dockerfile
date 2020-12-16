@@ -3,6 +3,8 @@ FROM alpine:3.10
 RUN apk update
 RUN apk upgrade 
 RUN apk add git
+RUN apk add docker
+RUN service docker start
 
 # Install Python
 RUN echo "**** install Python ****" && \
