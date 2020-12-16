@@ -2,7 +2,7 @@ from prefect import Client
 from prefect.environments import FargateTaskEnvironment
 from prefect.environments.storage import Docker
 
-from helpers import ecr_authenticate, get_prefect_token
+from helpers import ecr_authenticate, get_prefect_token, create_ecr_repository
 
 flow_module = __import__("flow")
 
@@ -57,6 +57,9 @@ ecr_authenticate()
 
 # Instantiate the prefect client
 prefect_client = Client(api_token=get_prefect_token(secret_name="prefectregistertoken"))
+
+# Create ECR repository
+create_ecr_repository(flow_name="dev_sample_workflow")
 
 # Register the Workflow
 prefect_client.register(flow=flow_module.flow, project_name="dev_dataflow_automation")

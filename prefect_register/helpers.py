@@ -60,3 +60,29 @@ def get_prefect_token(secret_name: str):
             secret = base64.b64decode(get_secret_value_response["SecretBinary"])
 
     return json.loads(secret).get(secret_name)
+
+
+def create_ecr_repository(flow_name: str):
+    """Create ECR repository for flow
+
+    Arguments:
+        flow_name {string} -- Name of the flow we are pushing
+
+    """
+
+    ecr_client = boto3.client(service_name="ecr")
+
+    try:
+        # Check if repository already exists
+        ecr_client.describe_repositories(repositoryNames=[flow_name])
+    except ClientError:
+        # It will fail in case the repository doesn't exist
+        try:
+            # Create the ECR repository
+            ecr_client.create_repository(repositoryName=flow_name)
+        except ClientError as e:
+            raise e
+        else:
+            print(f"ECR repository {flow_name} created !")
+    else:
+        print(f"ECR repository {flow_name} already exists !")
