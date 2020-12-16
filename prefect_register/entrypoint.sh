@@ -19,6 +19,7 @@ git checkout $commit_sha -- $workflow_path
 mv $workflow_path /tmp/$workflow_path
 # move flow register into the flow folder
 mv /tmp/workflow_register.py /tmp/$workflow_path/workflow_register.py
+mv /tmp/helpers.py /tmp/$workflow_path/helpers.py
 
 # install prefect
 pip3 install prefect
