@@ -6,7 +6,7 @@ from helpers import ecr_authenticate, get_prefect_token
 
 flow_module = __import__("flow")
 
-flow_module.environment = FargateTaskEnvironment(
+flow_module.flow.environment = FargateTaskEnvironment(
     requiresCompatibilities=["FARGATE"],
     region="ap-southeast-2",
     labels=["dev_dataflow_automation"],
@@ -44,7 +44,7 @@ flow_module.environment = FargateTaskEnvironment(
 )
 
 # Set the flow storage. Where to get the code from
-flow_module.storage = Docker(
+flow_module.flow.storage = Docker(
     registry_url="844814218183.dkr.ecr.ap-southeast-2.amazonaws.com",
     image_name="dev_sample_workflow",
     image_tag="latest",
