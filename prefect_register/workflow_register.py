@@ -2,7 +2,7 @@ from prefect import Client
 from prefect.environments import FargateTaskEnvironment
 from prefect.environments.storage import Docker
 
-from helpers import ecr_authenticate, get_prefect_token
+from .helpers import ecr_authenticate, get_prefect_token
 
 flow_module = __import__("flow")
 

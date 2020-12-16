@@ -24,6 +24,6 @@ mv /tmp/workflow_register.py /tmp/$workflow_path/workflow_register.py
 pip3 install prefect
 
 cd /tmp/$workflow_path
-
+ls
 # register workflow
 python3 workflow_register.py
