@@ -4,8 +4,9 @@ RUN apk update
 RUN apk upgrade 
 RUN apk add git
 RUN apk add docker
-#RUN apk add openrc --no-cache
-#RUN rc-service docker start
+
+# Set timezone
+ENV TZ=UTC
 
 # Install Python
 RUN echo "**** install Python ****" && \
