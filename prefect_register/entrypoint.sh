@@ -23,6 +23,8 @@ mv /tmp/helpers.py /tmp/$workflow_path/helpers.py
 
 # install prefect
 pip3 install prefect
+# install boto3
+pip3 install boto3
 
 cd /tmp/$workflow_path
 ls
