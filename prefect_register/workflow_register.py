@@ -59,4 +59,4 @@ ecr_authenticate()
 prefect_client = Client(api_token=get_prefect_token(secret_name="prefectregistertoken"))
 
 # Register the Workflow
-prefect_client.register(flow=flow_module, project_name="dev_dataflow_automation")
+prefect_client.register(flow=flow_module.flow, project_name="dev_dataflow_automation")
