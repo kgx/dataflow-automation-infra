@@ -12,8 +12,7 @@ def register_workflow():
     flow_module = __import__("flow")
     flow_name = flow_module.flow.name
 
-    print(f"flow name: {flow_name}")
-    print(f"env: {env}")
+    flow_module.flow.name = f"{env}_{flow_name}"
 
     flow_module.flow.environment = FargateTaskEnvironment(
         requiresCompatibilities=["FARGATE"],
