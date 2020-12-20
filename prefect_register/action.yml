@@ -1,6 +1,9 @@
 # action.yml
 name: 'Register Workflow with Prefect Cloud'
 inputs:
+  env:
+    description: 'Environment to deploy Workflow'
+    required: true
   git_url:
     description: 'Url of workflow Git repository'
     required: true
@@ -17,6 +20,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - ${{ inputs.env }}
     - ${{ inputs.git_url }}
     - ${{ inputs.branch_name }}
     - ${{ inputs.commit_sha }}

@@ -1,10 +1,11 @@
 #!/bin/sh -l
 
 # set variables
-git_url=$1
-branch_name=$2
-commit_sha=$3
-workflow_path=$4
+env=$1
+git_url=$2
+branch_name=$3
+commit_sha=$4
+workflow_path=$5
 git_url_basename=$(basename $git_url)
 repository_name=${git_url_basename%.*}
 
@@ -29,4 +30,5 @@ pip3 install boto3
 #cd /tmp/$workflow_path
 
 # register workflow
-python3 /tmp/$workflow_path/workflow_register.py
+python3 /tmp/$workflow_path/workflow_register.py \
+ --env=$env
