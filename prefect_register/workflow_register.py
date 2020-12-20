@@ -6,6 +6,8 @@ from helpers import ecr_authenticate, get_prefect_token, create_ecr_repository
 
 flow_module = __import__("flow")
 
+print(flow_module.flow)
+
 flow_module.flow.environment = FargateTaskEnvironment(
     requiresCompatibilities=["FARGATE"],
     region="ap-southeast-2",
