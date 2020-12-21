@@ -7,8 +7,7 @@ from botocore.exceptions import ClientError
 
 
 def ecr_authenticate():
-    aws_session = boto3.Session()
-    ecr_client = aws_session.client("ecr")
+    ecr_client = boto3.client("ecr")
 
     ecr_credentials = ecr_client.get_authorization_token()["authorizationData"][0]
 
@@ -86,3 +85,40 @@ def create_ecr_repository(flow_name: str):
             print(f"ECR repository {flow_name} created !")
     else:
         print(f"ECR repository {flow_name} already exists !")
+
+
+def __get_subnets(env: str):
+    env_subnets = []
+    ec2_client = boto3.client("ec2")
+    subnets = ec2_client.describe_subnets()
+    for subnet in subnets["Subnets"]:
+        if "Tags" in subnet:
+            for item in subnet["Tags"]:
+                if item.get("Key") == "Name" and item.get("Value").startswith(env):
+                    env_subnets.append(subnet["SubnetId"])
+
+    return env_subnets
+
+
+def __get_iam_roles(env: str):
+    iam = boto3.resource("iam")
+    execution_role_arn = iam.Role(f"{env}_prefect_workflow_ecs_task_execution_role").arn
+    task_role_arn = iam.Role(f"{env}_prefect_workflow_ecs_task_role").arn
+    return execution_role_arn, task_role_arn
+
+
+def __get_aws_creds():
+    aws_region = boto3.session.Session().region_name
+    sts = boto3.client("sts")
+    account_id = sts.get_caller_identity()["Account"]
+    return account_id, aws_region
+
+
+def get_aws_infrastructure(env: str):
+    env_subnets = __get_subnets(env)
+    execution_role_arn, task_role_arn = __get_iam_roles(env)
+    account_id, aws_region = __get_aws_creds()
+
+    return account_id, aws_region, env_subnets, execution_role_arn, task_role_arn
+
+    # iam_client = aws_session.client("iam")
