@@ -120,5 +120,3 @@ def get_aws_infrastructure(env: str):
     account_id, aws_region = __get_aws_creds()
 
     return account_id, aws_region, env_subnets, execution_role_arn, task_role_arn
-
-    # iam_client = aws_session.client("iam")

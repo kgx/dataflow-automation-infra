@@ -6,7 +6,7 @@ from botocore.exceptions import ClientError
 
 
 def get_prefect_token(secret_name: str):
-    client = boto3.client(service_name="secretsmanager", region_name="ap-southeast-2")
+    client = boto3.client(service_name="secretsmanager")
     secret = None
     try:
         get_secret_value_response = client.get_secret_value(SecretId=secret_name)
