@@ -1,7 +1,7 @@
 import argparse
 import os
 
-from helpers import get_prefect_token
+from prefect_helpers import get_prefect_token
 
 from prefect.client import Client
 
