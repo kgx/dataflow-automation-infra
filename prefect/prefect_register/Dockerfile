@@ -25,8 +25,7 @@ RUN apk add gcc python3-dev build-base musl-dev libc-dev openssl-dev linux-heade
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
 COPY workflow_register.py /tmp/workflow_register.py
-RUN ls
-COPY helpers.py /tmp/helpers.py
+COPY action_helpers.py /tmp/helpers.py
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`).
 ENTRYPOINT ["/entrypoint.sh"]
