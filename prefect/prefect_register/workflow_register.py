@@ -3,7 +3,7 @@ from prefect import Client
 from prefect.environments import FargateTaskEnvironment
 from prefect.environments.storage import Docker
 
-from helpers import (
+from .helpers import (
     ecr_authenticate,
     get_prefect_token,
     create_ecr_repository,
