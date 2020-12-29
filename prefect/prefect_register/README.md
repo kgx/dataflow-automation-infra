@@ -1,21 +1,25 @@
-# Hello world docker action
-
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
-
+# Prefect Register docker action
+This action register a workflow to prefect cloud
+<br>
 ## Inputs
+### `env`
+**Required** the environment where the workflow should be register to
+### `git_url`
+**Required** url of workflow Git repository
+### `branch_name`
+**Required** when deploying to dev set the branch name you are working on
+### `commit_sha`
+**Required** when deploying to dev set the commit sha (usually the latest push you have done)
+### `workflow_path`
+**Required** path to the workflow folder inside the repository
 
-### `who-to-greet`
-
-**Required** The name of the person to greet. Default `"World"`
-
-## Outputs
-
-### `time`
-
-The time we greeted you.
 
 ## Example usage
-
-uses: actions/hello-world-docker-action@v1
+uses: maikelpenz/dataflow-automation-infra/prefect/prefect_register@v1
 with:
-  who-to-greet: 'Mona the Octocat'
+  env: dev
+  git_url: 'https://github.com/maikelpenz/dataflow-sample-workflow.git'
+  branch_name: ${{ steps.action_vars.outputs.branch_name }}
+  commit_sha: ${{ steps.action_vars.outputs.commit_sha }}
+  workflow_path: 'workflow'
+  prefect_register_token_secret_name: 'prefectregistertoken'

@@ -16,6 +16,9 @@ inputs:
   workflow_path:
     description: 'Path to the workflow in the repository'
     required: true
+  prefect_register_token_secret_name:
+    description: 'AWS Secrets manager name where prefect register token is stored'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -25,3 +28,4 @@ runs:
     - ${{ inputs.branch_name }}
     - ${{ inputs.commit_sha }}
     - ${{ inputs.workflow_path }}
+    - ${{ inputs.prefect_register_token_secret_name }}

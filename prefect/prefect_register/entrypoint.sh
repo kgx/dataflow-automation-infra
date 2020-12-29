@@ -6,6 +6,7 @@ git_url=$2
 branch_name=$3
 commit_sha=$4
 workflow_path=$5
+prefect_register_token_secret_name=$6
 git_url_basename=$(basename $git_url)
 repository_name=${git_url_basename%.*}
 
@@ -32,3 +33,4 @@ pip3 install boto3
 # register workflow
 python3 /tmp/$workflow_path/workflow_register.py \
  --env=$env
+ --prefect_register_token_secret_name=$prefect_register_token_secret_name

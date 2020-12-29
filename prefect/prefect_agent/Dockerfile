@@ -27,6 +27,10 @@ ENV subnets_env=$subnets_arg
 ARG environment_arg=None
 ENV environment_env=$environment_arg
 
+ARG prefect_token_secret_name_arg=None
+ENV prefect_token_secret_name_env=$prefect_token_secret_name_arg
+
+
 COPY start_agent.sh /usr/local/start_agent.sh
 COPY prefect_helpers.py /usr/local/prefect_helpers.py
 COPY start_agent.py /usr/local/start_agent.py
@@ -39,4 +43,5 @@ ENTRYPOINT /usr/local/start_agent.sh \
     $task_role_arn_env \
     $execution_role_arn_env \
     $subnets_env \
-    $environment_env
+    $environment_env \
+    $prefect_token_secret_name_env

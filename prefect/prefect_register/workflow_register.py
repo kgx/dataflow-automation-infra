@@ -1,4 +1,5 @@
 import argparse
+
 from prefect import Client
 from prefect.environments import FargateTaskEnvironment
 from prefect.environments.storage import Docker
@@ -11,10 +12,16 @@ from action_helpers import (
 )
 
 
-def register_workflow():
+def register_workflow(prefect_register_token_secret_name: str):
+    """
+    Registers the workflow to Prefect Cloud
+
+    Parameters:
+        prefect_register_token_secret_name [str]
+            -- name of aws secrets manager secret where prefect register token is stored
+    """
     flow_module = __import__("flow")
     flow_name = f"{env}_{flow_module.flow.name}"
-
     flow_module.flow.name = flow_name
 
     flow_module.flow.environment = FargateTaskEnvironment(
@@ -63,7 +70,9 @@ def register_workflow():
     ecr_authenticate()
 
     # Instantiate the prefect client
-    prefect_client = Client(api_token=get_prefect_token(secret_name="prefectregistertoken"))
+    prefect_client = Client(
+        api_token=get_prefect_token(secret_name=prefect_register_token_secret_name)
+    )
 
     # Create ECR repository
     create_ecr_repository(flow_name=flow_name)
@@ -75,9 +84,13 @@ def register_workflow():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--env", type=str, required=False, default=False)
+    parser.add_argument(
+        "--prefect_register_token_secret_name", type=str, required=False, default=False
+    )
 
     args, unknown = parser.parse_known_args()
     env = args.env
+    prefect_register_token_secret_name = args.prefect_register_token_secret_name
 
     account_id, aws_region, subnets, execution_role_arn, task_role_arn = get_aws_infrastructure(env)
-    register_workflow()
+    register_workflow(prefect_register_token_secret_name)
