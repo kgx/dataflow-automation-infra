@@ -19,6 +19,7 @@ def get_prefect_token(secret_name: str):
     """
     secret = None
     try:
+        print(secret_name)
         get_secret_value_response = SECRETS_MANAGER_CLIENT.get_secret_value(SecretId=secret_name)
     except ClientError as e:
         raise e
