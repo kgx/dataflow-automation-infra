@@ -141,6 +141,7 @@ jobs:
           --build-arg subnets_arg=${{ steps.read_tf_outputs.outputs.vpc_public_subnets }} \
           --build-arg environment_arg=${{ env.env }} \
           --build-arg token_secret_name_arg=${{ env.token_secret_name }} \
+          --build-arg prefect_token_secret_name_arg=${{ env.prefect_token_secret_name }} \
           -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
