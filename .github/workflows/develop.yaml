@@ -18,7 +18,7 @@ env:
     prefect_agent_working_dir: './prefect/prefect_agent'
     agent_cpu: 512
     agent_memory: 1024
-    prefect_token_secret_name: prefectagenttoken
+    prefect_token_secret_name: 'prefectagenttoken'
     # prefect project
     prefect_project_working_dir: './prefect/prefect_project'
 
@@ -168,5 +168,5 @@ jobs:
           pip3 install --user boto3
 
           python3 prefect_project_setup.py \
-            --environment=${{ env.env }}
+            --environment=${{ env.env }} \
             --prefect_token_secret_name=${{ env.prefect_token_secret_name }}

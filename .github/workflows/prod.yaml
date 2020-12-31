@@ -18,7 +18,7 @@ env:
     prefect_agent_working_dir: './prefect/prefect_agent'
     agent_cpu: 512
     agent_memory: 1024
-    prefect_token_secret_name: prefectagenttoken
+    prefect_token_secret_name: 'prefectagenttoken'
     # prefect project
     prefect_project_working_dir: './prefect/prefect_project'
 
@@ -140,7 +140,6 @@ jobs:
           --build-arg execution_role_arn_arg=${{ steps.read_tf_outputs.outputs.agent_ecs_task_execution_role_arn }} \
           --build-arg subnets_arg=${{ steps.read_tf_outputs.outputs.vpc_public_subnets }} \
           --build-arg environment_arg=${{ env.env }} \
-          --build-arg token_secret_name_arg=${{ env.token_secret_name }} \
           --build-arg prefect_token_secret_name_arg=${{ env.prefect_token_secret_name }} \
           -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
@@ -169,5 +168,5 @@ jobs:
           pip3 install --user boto3
 
           python3 prefect_project_setup.py \
-            --environment=${{ env.env }}
+            --environment=${{ env.env }} \
             --prefect_token_secret_name=${{ env.prefect_token_secret_name }}
