@@ -12,7 +12,6 @@ def create_prefect_project(environment: str, prefect_token_secret_name: str):
         environment [str] -- environment to create the prefect project
         prefect_token_secret_name [str] -- aws secret name for the prefect token
     """
-    print(prefect_token_secret_name)
     client = Client(api_token=get_prefect_token(secret_name=prefect_token_secret_name))
     client.create_project(project_name=f"{environment}_dataflow_automation")
 
@@ -25,6 +24,5 @@ if __name__ == "__main__":
     args, unknown = parser.parse_known_args()
     environment = args.environment
     prefect_token_secret_name = args.prefect_token_secret_name
-    print(prefect_token_secret_name)
 
     create_prefect_project(environment, prefect_token_secret_name)

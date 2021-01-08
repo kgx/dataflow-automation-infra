@@ -7,8 +7,6 @@ branch_name=$3
 commit_sha=$4
 workflow_path=$5
 prefect_register_token_secret_name=$6
-echo "MAIKELL"
-echo $prefect_register_token_secret_name
 git_url_basename=$(basename $git_url)
 repository_name=${git_url_basename%.*}
 
