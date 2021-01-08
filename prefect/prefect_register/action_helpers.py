@@ -14,6 +14,7 @@ STS_CLIENT = boto3.client("sts")
 
 
 def get_prefect_token(secret_name: str):
+    print("secret: " + secret_name)
     """
     Get the prefect token from AWS Secrets manager
 

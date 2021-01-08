@@ -69,6 +69,8 @@ def register_workflow(prefect_register_token_secret_name: str):
     # Authenticate to ECR as the registration process pushes the image to AWS
     ecr_authenticate()
 
+    print("secret: " + prefect_register_token_secret_name)
+
     # Instantiate the prefect client
     prefect_client = Client(
         api_token=get_prefect_token(secret_name=prefect_register_token_secret_name)
@@ -91,6 +93,7 @@ if __name__ == "__main__":
     args, unknown = parser.parse_known_args()
     env = args.env
     prefect_register_token_secret_name = args.prefect_register_token_secret_name
+    print("secret: " + prefect_register_token_secret_name)
 
     account_id, aws_region, subnets, execution_role_arn, task_role_arn = get_aws_infrastructure(env)
     register_workflow(prefect_register_token_secret_name)
