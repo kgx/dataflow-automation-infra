@@ -9,7 +9,7 @@ ECR_USERNAME = "AWS"
 ECR_CLIENT = boto3.client("ecr")
 SECRETS_MANAGER_CLIENT = boto3.client(service_name="secretsmanager")
 EC2_CLIENT = boto3.client("ec2")
-IAM_RESOURCE = boto3.resource("IAM")
+IAM_RESOURCE = boto3.resource("iam")
 STS_CLIENT = boto3.client("sts")
 
 
