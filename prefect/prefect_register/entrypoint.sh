@@ -34,5 +34,5 @@ pip3 install boto3
 
 # register workflow
 python3 /tmp/$workflow_path/workflow_register.py \
- --env=$env
+ --env=$env \
  --prefect_register_token_secret_name=$prefect_register_token_secret_name
